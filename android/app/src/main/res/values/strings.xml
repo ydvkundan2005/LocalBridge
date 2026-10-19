@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LocalBridge</string>
+    <string name="action_send_to_mac">Send to Mac</string>
+    <string name="share_to_mac_label">Send to Mac via LocalBridge</string>
+    <string name="tile_sync_clipboard">Sync to Mac</string>
+    <string name="widget_description">1-Tap Clipboard Sync and File Send</string>
+</resources>
+

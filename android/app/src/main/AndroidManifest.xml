@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  LocalBridge Android Manifest — Phase 1
+  Permissions: only what is justified for Phase 1 (clipboard feasibility).
+  No camera, location, contacts, SMS, telephony, or all-files access.
+
+  ShizukuProvider is intentionally absent in Phase 1:
+    - It requires android.permission.INTERACT_ACROSS_USERS_FULL on the
+      <provider> tag, which causes the OEM package installer to crash on
+      most devices (MIUI, OxygenOS, One UI).
+    - ClipboardCaptureManager falls back to StandardClipboardCapture
+      automatically when Shizuku is not installed.
+    - Re-add in Phase 2 only after verifying on the target device.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Network: required for WebSocket connection to the Mac (Phase 3+). -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- NSD / mDNS discovery (Phase 3+). -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- Foreground service & notifications to keep connection and sync alive in background -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:name=".LocalBridgeApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LocalBridge"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.LocalBridge">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          ShizukuProvider REMOVED for Phase 1.
+          Reason: android:permission="android.permission.INTERACT_ACROSS_USERS_FULL"
+          on <provider> crashes the OEM package installer (MIUI / OxygenOS / One UI).
+          Re-add in Phase 2 after successful Phase 1 install is confirmed.
+        -->
+
+
+
+
+        <!-- Process text action: shows 'Send to Mac' in text selection menu in any app -->
+        <activity
+            android:name=".ui.ProcessTextSyncActivity"
+            android:label="@string/action_send_to_mac"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PROCESS_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Share Sheet integration: appears in Android Share menu for ANY file type.
+          The label uses the connected device name when available.
+          Handles ACTION_SEND (single) and ACTION_SEND_MULTIPLE (batch share).
+        -->
+        <activity
+            android:name=".ui.ShareReceiveActivity"
+            android:label="@string/share_to_mac_label"
+            android:exported="true"
+            android:theme="@style/Theme.LocalBridge.Translucent"
+            android:excludeFromRecents="true">
+            <!-- Single file share (any MIME type) -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <!-- Multiple file share (any MIME type) -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Quick Settings Tile for 1-tap sync from status bar -->
+        <service
+            android:name=".network.QuickSyncTileService"
+            android:label="@string/tile_sync_clipboard"
+            android:icon="@android:drawable/ic_menu_share"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- Foreground Service that keeps connection and sync active in background -->
+        <service
+            android:name=".network.ClipboardForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Trampoline activity for 50ms background clipboard reading -->
+        <activity
+            android:name=".ui.QuickSyncTrampolineActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:noHistory="true" />
+
+        <!-- Home screen 2-button widget -->
+        <receiver
+            android:name=".widget.LocalBridgeWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/local_bridge_widget_info" />
+        </receiver>
+    </application>
+</manifest>

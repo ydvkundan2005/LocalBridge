@@ -1,0 +1,16 @@
+{
+  "protocol": "localbridge",
+  "protocolVersion": 1,
+  "type": "clipboard.ack",
+  "messageId": "019a0000-0000-7000-8000-000000000003",
+  "requestId": "019a0000-0000-7000-8000-000000000002",
+  "sentAt": "2026-10-17T05:30:01Z",
+  "senderDeviceId": "019a0000-0000-7000-8000-000000000020",
+  "recipientDeviceId": "019a0000-0000-7000-8000-000000000010",
+  "payload": {
+    "eventId": "019a0000-0000-7000-8000-000000000101",
+    "status": "APPLIED",
+    "appliedAt": "2026-10-17T05:30:01Z",
+    "reasonCode": null
+  }
+}

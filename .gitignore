@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Android / Gradle generated files
+.gradle/
+**/.gradle/
+**/build/
+local.properties
+*.hprof
+*.jfr
+
+# macOS / Swift generated files
+mac/.build/
+**/DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+secrets/
+credentials/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.swp
+
+# Additional generated files
+android/.build/
+.vscode/
+release/
+releases/
+
+# Additional generated files
+android/.build/
+.vscode/
+release/
+releases/
+
+# Android Studio local settings
+android/.idea/

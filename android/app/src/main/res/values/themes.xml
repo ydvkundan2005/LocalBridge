@@ -1,0 +1,13 @@
+<resources>
+    <!-- Base application theme; Compose overrides most visual decisions. -->
+    <style name="Theme.LocalBridge" parent="android:Theme.Material.NoActionBar" />
+
+    <!-- Translucent theme for ShareReceiveActivity bottom-sheet overlay -->
+    <style name="Theme.LocalBridge.Translucent" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+</resources>

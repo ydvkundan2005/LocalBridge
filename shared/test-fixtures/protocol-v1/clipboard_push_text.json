@@ -1,0 +1,23 @@
+{
+  "protocol": "localbridge",
+  "protocolVersion": 1,
+  "type": "clipboard.push",
+  "messageId": "019a0000-0000-7000-8000-000000000002",
+  "requestId": null,
+  "sentAt": "2026-10-17T05:30:00Z",
+  "senderDeviceId": "019a0000-0000-7000-8000-000000000010",
+  "recipientDeviceId": "019a0000-0000-7000-8000-000000000020",
+  "payload": {
+    "eventId": "019a0000-0000-7000-8000-000000000101",
+    "originDeviceId": "019a0000-0000-7000-8000-000000000010",
+    "originSequence": 1,
+    "capturedAt": "2026-10-17T05:30:00Z",
+    "contentType": "text",
+    "mimeType": "text/plain;charset=utf-8",
+    "byteLength": 19,
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "content": "Example copied text",
+    "attachment": null,
+    "sensitivity": "unknown"
+  }
+}

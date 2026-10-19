@@ -1,0 +1,11 @@
+{
+  "protocol": "localbridge",
+  "protocolVersion": 1,
+  "type": "unknown.type.that.must.be.rejected",
+  "messageId": "019a0000-0000-7000-8000-000000000099",
+  "requestId": null,
+  "sentAt": "2026-10-17T05:30:00Z",
+  "senderDeviceId": "019a0000-0000-7000-8000-000000000010",
+  "recipientDeviceId": "019a0000-0000-7000-8000-000000000020",
+  "payload": {}
+}
