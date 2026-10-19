@@ -3,190 +3,178 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090b0e">
-  <meta name="description" content="LocalBridge connects your Android phone and Mac for local clipboard and file sharing. Explore how it works and download v6.0.">
-  <title>LocalBridge — Your phone and Mac, in sync</title>
-  <style>
-    :root{color-scheme:dark;--bg:#090b0e;--panel:#10141a;--panel2:#141a22;--line:#252d38;--text:#f4f7fb;--muted:#a1acba;--accent:#b8f36b;--accent2:#d5ff9b;--blue:#9bc8ff;--max:1120px}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 75% -10%,#1b2b24 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    a{color:inherit;text-decoration:none}
-    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
-    .brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.04em;font-size:20px}
-    .logo{display:grid;place-items:center;width:34px;height:34px;border:1px solid #ffffff36;border-radius:11px;background:#ffffff08}
-    .logo svg{width:22px}
-    .navlinks{display:flex;gap:26px;color:var(--muted);font-size:14px}
-    .navlinks a:hover,.textlink:hover{color:var(--accent)}
-    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff22;border-radius:999px;padding:7px 12px;color:#d6e2d0;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px #b8f36b80}
-    .hero{padding:92px 0 76px;display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
-    h1{font-size:clamp(44px,6.5vw,76px);line-height:.99;letter-spacing:-.075em;margin:22px 0 24px;max-width:700px}
-    h1 span{color:var(--accent)}
-    .lead{font-size:18px;color:var(--muted);max-width:570px;line-height:1.7}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 22px}
-    .btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:13px 18px;border-radius:12px;font-weight:700;font-size:14px;border:1px solid var(--line);transition:transform .15s,background .15s}
-    .btn:hover{transform:translateY(-2px)}
-    .primary{background:var(--accent);color:#10160b;border-color:var(--accent)}
-    .primary:hover{background:var(--accent2)}
-    .secondary{background:#ffffff08}
-    .tiny{font-size:12px;color:var(--muted)}
-    .device-stage{min-height:390px;position:relative;display:grid;place-items:center}
-    .glow{position:absolute;width:290px;height:290px;border-radius:50%;background:#b8f36b12;filter:blur(35px)}
-    .device{position:absolute;border:1px solid #46515f;background:linear-gradient(150deg,#202833,#0c1015 65%);box-shadow:0 30px 80px #0008}
-    .laptop{width:310px;height:220px;border-radius:16px;padding:10px;right:2px;top:72px;transform:rotate(-3deg)}
-    .screen{height:100%;border:1px solid #ffffff14;border-radius:9px;background:#0a0e12;padding:15px}
-    .windowbar{display:flex;gap:5px;margin-bottom:18px}
-    .windowbar i{width:6px;height:6px;border-radius:50%;background:#6e7b8c}
-    .mini-title{font-size:11px;color:#93a0af;margin-bottom:9px}
-    .clipboard{border:1px solid #2c3743;border-radius:9px;padding:11px;background:#121922;font-size:11px;color:#dfe8f3}
-    .clipboard small{display:block;color:var(--accent);margin-bottom:5px;font-size:9px;text-transform:uppercase;letter-spacing:.1em}
-    .phone{width:132px;height:252px;left:18px;bottom:20px;border-radius:24px;padding:8px;transform:rotate(7deg);z-index:2}
-    .phone-screen{height:100%;border-radius:17px;background:#0b1014;border:1px solid #ffffff10;padding:17px 9px}
-    .notch{width:39px;height:5px;border-radius:5px;background:#36404b;margin:-10px auto 18px}
-    .phone-label{font-size:10px;color:#dfe8f3;font-weight:700;margin-bottom:11px}
-    .phone-card{background:#141c24;border:1px solid #2c3743;border-radius:9px;padding:8px;margin-bottom:7px}
-    .phone-card strong{display:block;font-size:9px;color:var(--accent);margin-bottom:4px}
-    .phone-card span{font-size:8px;color:#b3bfcd}
-    .bridge{position:absolute;left:31%;top:47%;width:40%;border-top:1px dashed #b8f36b99;transform:rotate(-10deg)}
-    .bridge:after{content:"↔";position:absolute;right:40%;top:-17px;color:var(--accent);font-size:23px;background:var(--bg);padding:0 6px}
-    .section{padding:76px 0;border-top:1px solid #ffffff12}
-    .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
-    h2{font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-.055em;margin:12px 0 14px}
-    .section-lead{color:var(--muted);max-width:650px;margin:0 0 32px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .card{padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#ffffff07,#ffffff02)}
-    .iconbox{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;border:1px solid #b8f36b3b;background:#b8f36b0d;color:var(--accent);margin-bottom:20px}
-    .iconbox svg{width:21px;height:21px}
-    h3{margin:0 0 8px;font-size:18px;letter-spacing:-.025em}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:steps}
-    .step{border-top:1px solid #3b4653;padding:20px 8px 0 0;counter-increment:steps}
-    .step:before{content:"0" counter(steps);display:block;color:var(--accent);font-size:12px;letter-spacing:.1em;margin-bottom:15px}
-    .step p{font-size:14px;color:var(--muted)}
-    .notice{border:1px solid #3c4938;background:#b8f36b08;padding:18px 20px;border-radius:14px;color:#d3ddce;font-size:13px}
-    .downloads{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .download{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
-    .download-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-    .tag{font-size:11px;padding:5px 9px;border-radius:999px;border:1px solid #ffffff20;color:var(--muted)}
-    .download p{color:var(--muted);font-size:14px;min-height:46px}
-    .download .btn{width:100%;margin-top:10px}
-    .download .tiny{margin-top:12px}
-    .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    details{border:1px solid var(--line);border-radius:14px;padding:17px 19px;background:#ffffff03}
-    summary{font-weight:650;cursor:pointer}
-    details p{color:var(--muted);font-size:14px;margin-bottom:0}
-    footer{border-top:1px solid #ffffff12;padding:30px 0 42px;color:var(--muted);font-size:13px}
-    .footrow{display:flex;justify-content:space-between;gap:18px;align-items:center}
-    .textlink{color:#dbe6d5;text-decoration:underline;text-decoration-color:#b8f36b66;text-underline-offset:4px}
-    @media(max-width:800px){.hero{grid-template-columns:1fr;padding:66px 0 48px;gap:8px}.device-stage{min-height:340px}.laptop{right:8%;width:280px}.phone{left:12%}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:26px}.downloads,.faq{grid-template-columns:1fr}.navlinks{gap:13px}.navlinks a:nth-child(2){display:none}}
-    @media(max-width:460px){.wrap{width:min(calc(100% - 28px),var(--max))}.nav{height:66px}.navlinks{font-size:12px}.navlinks a:first-child{display:none}.hero{padding-top:52px}h1{font-size:48px}.device-stage{min-height:290px;transform:scale(.9);margin:0 -12px}.laptop{right:0;top:50px;width:250px;height:190px}.phone{left:0;bottom:5px;width:115px;height:225px}.section{padding:55px 0}.footrow{align-items:flex-start;flex-direction:column}}
-  </style>
+  <meta name="theme-color" content="#090a09">
+  <meta name="description" content="LocalBridge brings Android and Mac closer together with local clipboard and file sharing.">
+  <title>LocalBridge — Move naturally.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-<header class="wrap nav">
-  <a class="brand" href="#" aria-label="LocalBridge home">
-    <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8a4 4 0 0 1 0 8h-2M16 17H8a4 4 0 0 1 0-8h2"/><path d="m9 5-2 2 2 2m6 6 2 2-2 2"/></svg></span>
-    LocalBridge
-  </a>
-  <nav class="navlinks" aria-label="Main navigation">
-    <a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#downloads">Downloads</a><a href="https://github.com/ydvkundan2005/LocalBridge">GitHub ↗</a>
-  </nav>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="wordmark" href="#top" aria-label="LocalBridge home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+        <span>localbridge</span>
+      </a>
 
-<main>
-  <section class="wrap hero">
-    <div>
-      <span class="pill"><span class="dot"></span> Version 6.0 · Android + macOS</span>
-      <h1>Your phone and Mac.<br><span>On the same page.</span></h1>
-      <p class="lead">LocalBridge helps connect your Android phone and Mac on your local network, making everyday clipboard and file sharing feel more direct.</p>
-      <div class="actions">
-        <a class="btn primary" href="#downloads">Get LocalBridge <span aria-hidden="true">↗</span></a>
-        <a class="btn secondary" href="https://github.com/ydvkundan2005/LocalBridge">Explore source code ↗</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#download">Download</a>
+        <a class="nav-github" href="https://github.com/ydvkundan2005/LocalBridge" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> ANDROID × MACOS <span class="eyebrow-divider">/</span> VERSION 6.0</p>
+        <h1>Move between<br>devices. <em>Naturally.</em></h1>
+        <p class="hero-description">A quieter way to move text and files between your Android phone and your Mac — built around your local network.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#download">Explore downloads <span aria-hidden="true">↗</span></a>
+          <a class="quiet-link" href="https://github.com/ydvkundan2005/LocalBridge" target="_blank" rel="noreferrer">View source <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-footnote"><span class="footnote-rule"></span><span>Made to keep your workflow moving.</span></div>
       </div>
-      <p class="tiny">Free to explore · Open source repository · Current downloads are v6.0</p>
-    </div>
-    <div class="device-stage" aria-label="Illustration of an Android phone and Mac connected">
-      <div class="glow"></div><div class="bridge"></div>
-      <div class="device laptop"><div class="screen"><div class="windowbar"><i></i><i></i><i></i></div><div class="mini-title">LOCALBRIDGE / CLIPBOARD</div><div class="clipboard"><small>Ready to share</small>Copied from your phone — available on your Mac.</div><div class="clipboard" style="margin-top:9px;color:#aab7c5">Local network connection <span style="float:right;color:#b8f36b">●</span></div></div></div>
-      <div class="device phone"><div class="phone-screen"><div class="notch"></div><div class="phone-label">LocalBridge</div><div class="phone-card"><strong>Clipboard</strong><span>Text ready to sync</span></div><div class="phone-card"><strong>File transfer</strong><span>Share on your network</span></div></div></div>
-    </div>
-  </section>
 
-  <section class="section" id="features">
-    <div class="wrap">
-      <div class="eyebrow">Designed for your workflow</div>
-      <h2>Less friction between devices.</h2>
-      <p class="section-lead">A companion for moving small pieces of work between Android and macOS, without making the process the work.</p>
-      <div class="grid">
-        <article class="card"><div class="iconbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></div><h3>Clipboard sharing</h3><p>Move text between your Android device and Mac through LocalBridge’s clipboard workflow.</p></article>
-        <article class="card"><div class="iconbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H10l2 2h5.5A2.5 2.5 0 0 1 20 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5z"/><path d="M12 11v6m-3-3 3-3 3 3"/></svg></div><h3>Local file transfers</h3><p>Use the app’s file-sharing workflow to move files between devices on your local network.</p></article>
-        <article class="card"><div class="iconbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><path d="M9 18.5h6M2 8h2m16 0h2"/></svg></div><h3>Two-platform setup</h3><p>Install the Android app and macOS companion, then use the connection and discovery flow to pair your workflow.</p></article>
+      <div class="hero-visual" role="img" aria-label="Minimal illustration of LocalBridge running on a Mac and Android phone">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="connection-line"><span></span></div>
+        <div class="mac-device">
+          <div class="mac-camera"></div>
+          <div class="mac-screen">
+            <div class="app-topline"><span class="mini-brand-mark"><i></i><i></i></span><span>LOCALBRIDGE</span><span class="connected"><i></i> CONNECTED</span></div>
+            <div class="app-main">
+              <p class="app-overline">RECENT ACTIVITY</p>
+              <div class="activity-row"><span class="activity-icon text-icon">T</span><div><strong>Text copied</strong><small>Available on your Mac</small></div><span class="activity-time">NOW</span></div>
+              <div class="activity-row"><span class="activity-icon file-icon"><i></i></span><div><strong>Project notes.pdf</strong><small>Shared on local network</small></div><span class="activity-time">1M</span></div>
+              <div class="app-bottomline"><span>LOCAL NETWORK</span><span class="tiny-signal"><i></i><i></i><i></i></span></div>
+            </div>
+          </div>
+          <div class="mac-chin"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="phone-device">
+          <div class="phone-frame">
+            <div class="phone-pill"></div>
+            <div class="phone-ui-top"><span class="phone-app-mark"><i></i><i></i></span><span>LocalBridge</span><span class="phone-menu">···</span></div>
+            <p class="phone-greeting">Your devices,<br><strong>in reach.</strong></p>
+            <div class="phone-action"><span class="phone-action-symbol">T</span><span><strong>Clipboard</strong><small>Text ready to share</small></span><span class="action-arrow">↗</span></div>
+            <div class="phone-action"><span class="phone-action-symbol file-symbol"><i></i></span><span><strong>File transfer</strong><small>On your network</small></span><span class="action-arrow">↗</span></div>
+            <div class="phone-status"><i></i> MAC FOUND ON NETWORK</div>
+          </div>
+        </div>
+        <div class="visual-caption"><span>01</span><span>One simple bridge between your devices</span></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="how-it-works">
-    <div class="wrap">
-      <div class="eyebrow">Getting started</div>
-      <h2>Up and running in three steps.</h2>
-      <p class="section-lead">LocalBridge is intended for devices that can communicate over the same local network. Exact permissions and setup prompts depend on your device and OS version.</p>
-      <div class="steps">
-        <article class="step"><h3>Install both apps</h3><p>Download the Android APK for your phone and the DMG for your Mac from the release section below.</p></article>
-        <article class="step"><h3>Connect on your network</h3><p>Open LocalBridge on both devices and follow the app’s discovery and connection flow. Allow the required permissions when prompted.</p></article>
-        <article class="step"><h3>Share what you need</h3><p>Use the available clipboard and file-sharing controls to move content between your devices.</p></article>
+    <section class="intro-band" id="about">
+      <div class="container intro-grid">
+        <p class="eyebrow section-index">01 <span>/</span> THE IDEA</p>
+        <div class="intro-content">
+          <h2>Your devices work better<br><em>as one.</em></h2>
+          <p>LocalBridge is a companion for the small handoffs that happen all day: a line of text, a file, a thought you want on the other screen. It brings those moments closer without adding another complicated workflow.</p>
+        </div>
+        <div class="intro-aside"><span class="aside-line"></span><p>Designed for everyday use.<br>Connected over your local network.</p></div>
       </div>
-      <div class="notice" style="margin-top:28px"><strong>Network &amp; security note:</strong> LocalBridge uses local-network communication. Being on a local network does not by itself guarantee encryption or authentication. Use trusted networks and review the repository documentation before handling sensitive information.</div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="downloads">
-    <div class="wrap">
-      <div class="eyebrow">Downloads</div>
-      <h2>Choose your device.</h2>
-      <p class="section-lead">Current public release: v6.0. Download directly from GitHub Releases so you can see the published assets and release notes.</p>
-      <div class="downloads">
-        <article class="download">
-          <div class="download-top"><div class="iconbox" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 5h4m-3 13h2"/></svg></div><span class="tag">Android · APK</span></div>
-          <h3>LocalBridge for Android</h3>
-          <p>Android package for installation on a compatible device. The currently published v6.0 file is a <strong>debug build</strong>.</p>
-          <a class="btn primary" href="https://github.com/ydvkundan2005/LocalBridge/releases/download/v6.0/LocalBridge-android-v6.0-debug.apk">Download Android APK ↗</a>
-          <p class="tiny">You may need to allow installation from your chosen source. Only install apps you trust.</p>
+    <section class="features-section container" aria-labelledby="features-title">
+      <div class="section-heading">
+        <p class="eyebrow section-index">02 <span>/</span> WHAT IT DOES</p>
+        <h2 id="features-title">Only the essentials.</h2>
+      </div>
+      <div class="feature-list">
+        <article class="feature-row">
+          <span class="feature-number">01</span>
+          <div class="feature-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></div>
+          <h3>Clipboard sharing</h3>
+          <p>Carry useful text from your phone to your Mac, without sending it through a separate messaging app.</p>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
         </article>
-        <article class="download">
-          <div class="download-top"><div class="iconbox" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8m-4-4v4M7 7h10"/></svg></div><span class="tag">macOS · DMG</span></div>
-          <h3>LocalBridge for Mac</h3>
-          <p>Disk image for installing the macOS companion. Check the project README for supported macOS versions and setup notes.</p>
-          <a class="btn primary" href="https://github.com/ydvkundan2005/LocalBridge/releases/download/v6.0/LocalBridge-v6.0.dmg">Download macOS DMG ↗</a>
-          <p class="tiny">If macOS displays a security warning, verify the source and review the project documentation before proceeding.</p>
+        <article class="feature-row">
+          <span class="feature-number">02</span>
+          <div class="feature-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h4l2 2h6a2.5 2.5 0 0 1 2.5 2.5v8A2.5 2.5 0 0 1 18 20H6a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M12 11v5m-2.5-2.5L12 11l2.5 2.5"/></svg></div>
+          <h3>Local file transfer</h3>
+          <p>Move files between devices with the file-sharing workflow over a network they can both reach.</p>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="feature-row">
+          <span class="feature-number">03</span>
+          <div class="feature-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><path d="M9 18h6M2 8h2m16 0h2"/></svg></div>
+          <h3>Made for two screens</h3>
+          <p>An Android app and a macOS companion, designed to bring the two sides of your workflow closer.</p>
+          <span class="feature-arrow" aria-hidden="true">↗</span>
         </article>
       </div>
-      <p class="tiny" style="margin-top:18px">Want the latest notes or all available versions? <a class="textlink" href="https://github.com/ydvkundan2005/LocalBridge/releases">Browse all releases ↗</a></p>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="faq">
-    <div class="wrap">
-      <div class="eyebrow">Good to know</div>
-      <h2>Frequently asked questions.</h2>
-      <div class="faq" style="margin-top:28px">
-        <details><summary>Is LocalBridge free?</summary><p>The source repository and v6.0 release assets are publicly available on GitHub. Check the repository for licensing details; the project README currently indicates that a license has not yet been selected.</p></details>
-        <details><summary>Do both devices need the same network?</summary><p>LocalBridge is designed around local-network communication, so the devices generally need network connectivity that allows them to discover and reach one another.</p></details>
-        <details><summary>Is the Android APK a production release?</summary><p>The currently published APK is identified as a debug build. It is best treated as a test build rather than a verified, production-signed release.</p></details>
-        <details><summary>Where can I see the source code?</summary><p>The complete public repository includes the Android and macOS project source, documentation, and protocol test fixtures.</p></details>
+    <section class="how-section" id="how-it-works">
+      <div class="container how-grid">
+        <div class="how-heading">
+          <p class="eyebrow section-index">03 <span>/</span> THE FLOW</p>
+          <h2>Easy to begin.<br><em>Out of your way.</em></h2>
+          <p>Both devices should be connected to a local network that lets them reach one another. Permissions and setup prompts vary by operating-system version.</p>
+        </div>
+        <div class="steps-list">
+          <article class="step-row"><span>01</span><div><h3>Install</h3><p>Get the Android package and the macOS disk image below.</p></div><span class="step-line"></span></article>
+          <article class="step-row"><span>02</span><div><h3>Connect</h3><p>Open LocalBridge on both devices and follow the connection flow.</p></div><span class="step-line"></span></article>
+          <article class="step-row"><span>03</span><div><h3>Move freely</h3><p>Use the available clipboard and file-sharing controls when you need them.</p></div><span class="step-line"></span></article>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer>
-  <div class="wrap footrow">
-    <a class="brand" href="#"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 7h8a4 4 0 0 1 0 8h-2M16 17H8a4 4 0 0 1 0-8h2"/><path d="m9 5-2 2 2 2m6 6 2 2-2 2"/></svg></span>LocalBridge</a>
-    <span>Built for a smoother Android ↔ Mac workflow.</span>
-    <a class="textlink" href="https://github.com/ydvkundan2005/LocalBridge">Source code on GitHub ↗</a>
-  </div>
-</footer>
+    <section class="download-section container" id="download">
+      <div class="download-heading">
+        <div><p class="eyebrow section-index">04 <span>/</span> GET LOCALBRIDGE</p><h2>Choose your platform.</h2></div>
+        <p>Public release <span class="release-tag">v6.0</span><br>Download assets hosted on GitHub.</p>
+      </div>
+      <div class="download-list">
+        <article class="download-row">
+          <div class="download-platform"><span class="platform-icon android-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="7" width="12" height="13" rx="3"/><path d="M8 5 6 2m10 3 2-3M4 10v6m16-6v6M9 11v.01M15 11v.01"/></svg></span><div><h3>Android</h3><p>APK package <span>·</span> Debug build</p></div></div>
+          <div class="download-detail">For compatible Android devices</div>
+          <a class="download-link" href="https://github.com/ydvkundan2005/LocalBridge/releases/download/v6.0/LocalBridge-android-v6.0-debug.apk">Download APK <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="download-row">
+          <div class="download-platform"><span class="platform-icon mac-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="13" rx="2"/><path d="M8 21h8m-4-5v5M2 21h20"/></svg></span><div><h3>macOS</h3><p>Disk image <span>·</span> DMG</p></div></div>
+          <div class="download-detail">For your Mac companion</div>
+          <a class="download-link" href="https://github.com/ydvkundan2005/LocalBridge/releases/download/v6.0/LocalBridge-v6.0.dmg">Download DMG <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <div class="download-foot"><p>The Android download is currently a debug build. Review the project documentation before installing or using LocalBridge with sensitive information.</p><a href="https://github.com/ydvkundan2005/LocalBridge/releases" target="_blank" rel="noreferrer">All releases and notes <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div><p class="eyebrow section-index">05 <span>/</span> A FEW DETAILS</p><h2 id="faq-title">Good to know.</h2></div>
+        <div class="faq-list">
+          <details><summary>Do both devices need the same network?<span aria-hidden="true">+</span></summary><p>LocalBridge is designed around local-network communication. The network needs to allow the devices to discover and reach one another.</p></details>
+          <details><summary>Is the Android APK production-ready?<span aria-hidden="true">+</span></summary><p>The currently published v6.0 APK is identified as a debug build, so treat it as a test build rather than a verified production release.</p></details>
+          <details><summary>Is LocalBridge open source?<span aria-hidden="true">+</span></summary><p>The project repository is public on GitHub. Check the repository for current licensing details before redistributing or adapting the code.</p></details>
+          <details><summary>What about privacy and security?<span aria-hidden="true">+</span></summary><p>Local-network communication alone does not guarantee encryption or authentication. Use trusted networks and review the source and documentation before handling sensitive information.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <a class="wordmark" href="#top"><span class="brand-mark" aria-hidden="true"><span></span><span></span></span><span>localbridge</span></a>
+      <p>Small handoffs. Smoother days.</p>
+      <a class="footer-source" href="https://github.com/ydvkundan2005/LocalBridge" target="_blank" rel="noreferrer">GitHub repository <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year">2026</span> LocalBridge</span><span>Built for Android and macOS</span></div>
+  </footer>
 </body>
 </html>
