@@ -15,6 +15,17 @@ Transfer files and share text across your devices on a local network.
 
 ---
 
+## Project status and verification
+
+**Status: Active development; validation is still in progress.** The v6.0 release notes describe implemented features, but that does not mean every platform behavior has been production-validated.
+
+- The published Android v6.0 APK is a **debug build**, not a Play Store production release.
+- The checked-in [Phase 1 test-evidence record](test-evidence/phase-1.md) states that physical-device clipboard feasibility tests have **not yet been run**. Background or locked-screen clipboard behavior must not be assumed to work.
+- Shared protocol fixtures are present, but this repository does not currently contain a GitHub Actions CI workflow or a checked-in automated test suite that demonstrates both platform implementations passing those fixtures.
+- A repository license has not yet been selected. The project should not be described as open source until a license is added.
+
+For security, the current Android network security configuration permits cleartext traffic. A local Wi-Fi connection alone does not guarantee encryption, authentication or protection against interception. Do not use this build to transfer sensitive data until the transport and pairing model have been reviewed and tested.
+
 ## What is LocalBridge?
 
 LocalBridge is a cross-platform application for moving files and text between an Android phone and a Mac. It includes device discovery, pairing, file-transfer controls, clipboard actions, and quick access from the macOS menu bar.
