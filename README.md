@@ -17,8 +17,6 @@ Transfer files and share text across your devices on a local network.
 
 ## Project status and verification
 
-For repeatable device testing, use the [Device Validation Checklist](docs/DEVICE-VALIDATION-CHECKLIST.md). It separates test cases from recorded evidence and keeps untested behavior clearly marked.
-
 **Status: Active development; validation is still in progress.** The v6.0 release notes describe implemented features, but that does not mean every platform behavior has been production-validated.
 
 - The published Android v6.0 APK is a **debug build**, not a Play Store production release.
