@@ -20,7 +20,7 @@ Transfer files and share text across your devices on a local network.
 **Status: Active development; validation is still in progress.** The v6.0 release notes describe implemented features, but that does not mean every platform behavior has been production-validated.
 
 - The published Android v6.0 APK is a **debug build**, not a Play Store production release.
-- The checked-in [Phase 1 test-evidence record](test-evidence/phase-1.md) states that physical-device clipboard feasibility tests have **not yet been run**. Background or locked-screen clipboard behavior must not be assumed to work.
+- The checked-in [Phase 1 test-evidence record](test-evidence/phase-1.md) marks its clipboard-feasibility test matrix as **NOT TESTED**. An older section in [STATUS.md](STATUS.md) separately records a prior Nothing Phone A059 / Android 16 test of a Logcat-based workflow. These records do not establish that the current v6.0 build passes the full foreground, background and locked-screen test matrix. Reconcile the device, build version, exact test procedure and reproducible results before making broader clipboard-reliability claims.
 - Shared protocol fixtures are present, but this repository does not currently contain a GitHub Actions CI workflow or a checked-in automated test suite that demonstrates both platform implementations passing those fixtures.
 - A repository license has not yet been selected. The project should not be described as open source until a license is added.
 
