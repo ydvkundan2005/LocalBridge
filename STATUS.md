@@ -1,7 +1,10 @@
 # LocalBridge — STATUS
 
-**Last updated:** 2026-10-19 — **Release v6.0: Ultra-Fast File Transfer Engine, Native AppKit Drag-Drop & Complete Minimalist UI Redesign**
-**Current phase:** Phase 6 — Production Complete & Hardened ✅
+**Last feature log:** 2026-10-19 — Release v6.0 feature notes
+**Evidence review:** 2026-11-05
+**Current phase:** Feature development recorded; device validation, protocol testing and security review remain open.
+
+> **Evidence note (2026-11-05):** This file contains historical implementation notes, not a current production-readiness certification. The separate [Phase 1 test-evidence record](test-evidence/phase-1.md) marks its clipboard-feasibility matrix as NOT TESTED, while an older section below records a prior Nothing Phone A059 / Android 16 Logcat workflow test. Reconcile device/build identifiers, reproduce the current release behavior, and attach dated results before making reliability or production claims. The v6.0 Android artifact is a debug APK. The repository also has no selected license and no checked-in CI workflow or automated cross-platform test suite as of this review.
 
 ---
 
